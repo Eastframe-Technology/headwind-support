@@ -3,41 +3,87 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Headwind support</title>
-<meta name="description" content="Support and privacy policy for Headwind, the E6B flight computer app.">
-<style>
-  :root { color-scheme: light dark; --bg:#f4f7fa; --fg:#0f1720; --muted:#55636f; --accent:#0277bd; --card:#ffffff; }
-  @media (prefers-color-scheme: dark) { :root { --bg:#0b1118; --fg:#e8eef4; --muted:#9fb0bf; --accent:#4fc3f7; --card:#141d27; } }
-  body { margin:0; background:var(--bg); color:var(--fg); font:17px/1.55 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
-  main { max-width:680px; margin:0 auto; padding:48px 16px 64px; }
-  h1 { font-size:34px; margin:0 0 4px; } h2 { margin-top:40px; font-size:22px; }
-  p.lead { color:var(--muted); margin-top:0; }
-  .card { background:var(--card); border-radius:14px; padding:16px 20px; margin:16px 0; }
-  a { color:var(--accent); }
-  .logo { width:72px; height:72px; border-radius:18px; display:block; margin-bottom:16px; }
-  footer { color:var(--muted); font-size:14px; margin-top:48px; }
-</style>
+<title>Headwind: E6B flight computer for Android, with free crosswind tools</title>
+<meta name="description" content="Headwind is an E6B flight computer app for student pilots: wind triangle, runway crosswind, fuel, density altitude, weight and balance. No ads, no subscription. Free crosswind and density altitude calculators on this site.">
+<link rel="canonical" href="https://eastframe-technology.github.io/headwind-support/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Headwind: E6B flight computer for Android">
+<meta property="og:description" content="Headwind is an E6B flight computer app for student pilots: wind triangle, runway crosswind, fuel, density altitude, weight and balance. No ads, no subscription. Free crosswind and density altitude calculators on this site.">
+<meta property="og:image" content="https://eastframe-technology.github.io/headwind-support/img/og.jpg">
+<meta property="og:url" content="https://eastframe-technology.github.io/headwind-support/">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="icon.png">
+<link rel="stylesheet" href="style.css">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"MobileApplication","name":"Headwind: E6B Flight Computer","operatingSystem":"Android","applicationCategory":"TravelApplication","description":"E6B flight computer with wind triangle, runway crosswind, fuel, density altitude, true airspeed, weight and balance and nav log. No ads, no subscription, no account. For planning and training, not navigation.","downloadUrl":"https://play.google.com/store/apps/details?id=com.eastframe.headwind","installUrl":"https://play.google.com/store/apps/details?id=com.eastframe.headwind","image":"https://eastframe-technology.github.io/headwind-support/img/og.jpg","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"publisher":{"@type":"Organization","name":"Eastframe Technology LLC"}}
+</script>
 </head>
 <body>
 <main>
-  <img class="logo" src="icon.png" alt="">
-  <h1>Headwind</h1>
-  <p class="lead">An E6B flight computer: wind triangle, runway crosswind, fuel, density altitude, true airspeed, weight and balance, nav log and more. Free, with one optional unlock. No ads, no subscription, no account.</p>
-
-  <h2 id="support">Support</h2>
-  <div class="card">
-    <p>Questions, bugs, or feature requests: email <a href="mailto:contact@eastframe-technology.com">contact@eastframe-technology.com</a>. A human reads every message, usually the same day.</p>
-    <p>A <a href="headwind-ios-demo.mp4">short captioned walkthrough</a> shows every feature.</p>
+  <nav><a class="home" href="./"><img src="icon.png" alt="" width="24" height="24">Headwind</a><a href="tools/crosswind-calculator.html">Crosswind</a><a href="tools/density-altitude-calculator.html">Density altitude</a><a href="tools/wind-triangle-calculator.html">Wind triangle</a><a href="#guides">Guides</a><a href="#support">Support</a></nav>
+  <div class="hero">
+    <svg class="ring" viewBox="0 0 200 200" aria-hidden="true"><circle cx="100" cy="100" r="92" fill="none" stroke="currentColor" stroke-width="3"/><circle cx="100" cy="100" r="82" fill="none" stroke="currentColor" stroke-width="10" stroke-dasharray="1.5 12.8"/><path d="M42 142 L118 58 L150 98 Z" fill="none" stroke="currentColor" stroke-width="4" stroke-linejoin="round"/></svg>
+    <h1>An E6B flight computer that solves as you type</h1>
+    <p class="lead">Headwind works out wind correction, ground speed, runway crosswind, fuel and time on your phone, and shows how each answer was calculated. Made for student pilots and instructors. No ads, no account, no internet needed.</p>
+    <a class="cta" href="https://play.google.com/store/apps/details?id=com.eastframe.headwind"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M4 2.8v18.4c0 .6.6.9 1.1.6l15.4-9.2c.5-.3.5-.9 0-1.2L5.1 2.2C4.6 1.9 4 2.2 4 2.8z"/></svg>Get it on Google Play</a>
+    <p class="note">Android. Free: wind triangle, find the wind, runway wind, time, speed and distance, fuel, cloud base, conversions. Headwind Pro, one purchase paid once, adds the rest.</p>
   </div>
 
+  <div class="shots" aria-label="Screenshots">
+    <img src="img/shot-1.webp" width="200" height="400" alt="Home screen listing wind, speed, fuel, altitude and planning calculators">
+    <img src="img/shot-2.webp" width="200" height="400" alt="Wind triangle with true heading 043 and ground speed 101 knots, and a vector diagram" loading="lazy">
+    <img src="img/shot-3.webp" width="200" height="400" alt="Runway wind for 27L showing 16 knots headwind and 9 knots crosswind, within a 15 knot limit" loading="lazy">
+    <img src="img/shot-4.webp" width="200" height="400" alt="Weight and balance with total weight, center of gravity and an envelope chart" loading="lazy">
+    <img src="img/shot-5.webp" width="200" height="400" alt="Nav log with heading, ground speed, time and fuel for each leg" loading="lazy">
+    <img src="img/shot-6.webp" width="200" height="400" alt="Pressure altitude 5178 feet and density altitude 8140 feet, with the rule of thumb below" loading="lazy">
+  </div>
+
+  <h2>Free calculators, nothing to install</h2>
+  <p>Need one answer right now? These run in your browser and use the same formulas as the app.</p>
+  <div class="toolcards">
+    <a href="tools/crosswind-calculator.html" style="--c:var(--wind)"><strong>Crosswind</strong><span>Headwind and crosswind for any runway, with gusts and your limit.</span></a>
+    <a href="tools/density-altitude-calculator.html" style="--c:var(--accent)"><strong>Density altitude</strong><span>From elevation, altimeter and temperature, exact and by rule of thumb.</span></a>
+    <a href="tools/wind-triangle-calculator.html" style="--c:var(--track)"><strong>Wind triangle</strong><span>Heading and ground speed for a course, or find the wind aloft.</span></a>
+  </div>
+
+  <h2 id="guides">Guides for student pilots</h2>
+  <ul>
+    <li><a href="guides/what-is-an-e6b.html">What does an E6B flight computer compute?</a></li>
+    <li><a href="guides/crosswind-check-before-flight.html">How to do a crosswind check before a flight</a></li>
+    <li><a href="guides/density-altitude-explained.html">What density altitude means for your takeoff</a></li>
+  </ul>
+
+  <h2>What it does</h2>
+  <div class="grid">
+    <div class="card"><h3>Wind</h3>Wind triangle with a vector diagram, finding the wind from what you flew, and runway wind with gusts checked against your crosswind limit. All free.</div>
+    <div class="card"><h3>Time and fuel</h3>Give any two of time, speed and distance to get the third. Fuel needed, endurance or burn rate, with fuel weight for avgas or Jet A. Also free.</div>
+    <div class="card"><h3>Altitude and airspeed</h3>Pressure and density altitude with the rules of thumb beside the exact answer, true airspeed and Mach from calibrated airspeed. Pro.</div>
+    <div class="card"><h3>Planning</h3>Weight and balance with your own aircraft and a CG envelope chart, a nav log, descent planning, turns and glide, holding entries. Pro.</div>
+  </div>
+
+  <h2>Where it helps</h2>
+  <ul>
+    <li><strong>In ground school,</strong> to check the answer you got on a manual E6B. "How it's calculated" under each result gives the formula behind it. <a href="guides/what-is-an-e6b.html">What an E6B computes</a>.</li>
+    <li><strong>Before a flight,</strong> to work out the crosswind on the runway in use against your limit. <a href="guides/crosswind-check-before-flight.html">How to do a crosswind check</a>.</li>
+    <li><strong>On a hot day or at a high field,</strong> to see how far density altitude is above the field. <a href="guides/density-altitude-explained.html">What density altitude means for your takeoff</a>.</li>
+    <li><strong>Planning a cross-country,</strong> for headings, ground speeds, leg times and fuel.</li>
+  </ul>
+  <p class="safety"><strong>For planning and training only, not for navigation.</strong> Check every result against your aircraft's flight manual and official sources before you rely on it.</p>
+
   <h2>Frequently asked</h2>
-  <div class="card">
+  <div class="card faq">
     <p><strong>Can I use Headwind for navigation?</strong> No. It is for flight planning and training. Always check results against your aircraft's flight manual, its weight and balance report, and official sources.</p>
     <p><strong>Why does my density altitude differ a little from my textbook?</strong> Headwind computes the exact standard-atmosphere answer and also shows the rule of thumb most textbooks use (120 ft per °C above standard, 1,000 ft per inch of mercury). Both are shown so you can compare.</p>
     <p><strong>How do I change units?</strong> Tap the unit next to any number (for example kt) to switch it everywhere, or set them all in Settings.</p>
     <p><strong>Is the example aircraft real?</strong> No. It's a made-up four-seat trainer to show how weight and balance works. Edit it, or add your own aircraft with the numbers from its weight and balance report.</p>
     <p><strong>What does the free version include?</strong> Wind triangle, find the wind, runway wind, time/speed/distance, fuel, cloud base and conversions. Headwind Pro, a single purchase, adds pressure and density altitude, true airspeed and Mach, weight and balance, the nav log, descent planning, turns and glide, and holding entries.</p>
     <p><strong>Is there a subscription?</strong> No. Headwind Pro is a single purchase. Restore it on a new device from Settings.</p>
+  </div>
+
+  <h2 id="support">Support</h2>
+  <div class="card">
+    <p>Questions, bugs, or feature requests: email <a href="mailto:contact@eastframe-technology.com">contact@eastframe-technology.com</a>. A human reads every message, usually the same day.</p>
+    <p>A <a href="headwind-ios-demo.mp4">short captioned walkthrough</a> shows every feature.</p>
   </div>
 
   <h2 id="privacy">Privacy policy</h2>
@@ -50,8 +96,7 @@
     <p><strong>Children.</strong> Headwind is not directed at children and collects no personal information from anyone.</p>
     <p><strong>Changes.</strong> A new version of this policy will be published at this address with a new effective date.</p>
   </div>
-
-  <footer>© 2026 Eastframe Technology LLC</footer>
+  <footer>© 2026 Eastframe Technology LLC · <a href="privacy.html">Privacy policy</a> · <a href="#support">Support</a></footer>
 </main>
 </body>
 </html>

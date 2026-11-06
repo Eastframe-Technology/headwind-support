@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Crosswind calculator: headwind and crosswind component for any runway</title>
+<meta name="description" content="Free crosswind calculator. Enter the runway and the wind to get the crosswind and headwind components, with gusts and your crosswind limit. Formula, worked example and clock rule.">
+<link rel="canonical" href="https://eastframe-technology.github.io/headwind-support/tools/crosswind-calculator.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Crosswind calculator for any runway">
+<meta property="og:description" content="Free crosswind calculator. Enter the runway and the wind to get the crosswind and headwind components, with gusts and your crosswind limit. Formula, worked example and clock rule.">
+<meta property="og:image" content="https://eastframe-technology.github.io/headwind-support/img/og.jpg">
+<meta property="og:url" content="https://eastframe-technology.github.io/headwind-support/tools/crosswind-calculator.html">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="../icon.png">
+<link rel="stylesheet" href="../style.css">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@graph":[{"@type":"SoftwareApplication","name":"Crosswind calculator","description":"Crosswind and headwind components for a runway from the wind direction and speed.","url":"https://eastframe-technology.github.io/headwind-support/tools/crosswind-calculator.html","applicationCategory":"UtilitiesApplication","operatingSystem":"Any, runs in a web browser","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"publisher":{"@type":"Organization","name":"Eastframe Technology LLC"}},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Is the runway number magnetic or true?","acceptedAnswer":{"@type":"Answer","text":"Magnetic. Winds from a tower or ATIS are magnetic too, so you can use them directly. Winds in a METAR or TAF are true, so correct them for magnetic variation first. Where variation is large, it changes the answer."}},{"@type":"Question","name":"How do I do this without a calculator?","acceptedAnswer":{"@type":"Answer","text":"Use the clock rule. An angle of 15° gives about a quarter of the wind speed as crosswind, 30° about half, 45° about three quarters, and 60° or more nearly all of it."}},{"@type":"Question","name":"Should I use the steady wind or the gust?","acceptedAnswer":{"@type":"Answer","text":"Check both. The gust crosswind is the higher figure and is the one to compare with your limit. This calculator does that when you fill in the gust and limit fields."}},{"@type":"Question","name":"What limit should I enter?","acceptedAnswer":{"@type":"Answer","text":"Your own. That may be a limit from your instructor, your personal minimums, or the figure in your aircraft's flight manual. In many light aircraft the published crosswind figure is a demonstrated value, so read how your manual words it."}},{"@type":"Question","name":"Does it work in mph or km/h?","acceptedAnswer":{"@type":"Answer","text":"Yes. The components come out in the same unit as the wind you enter. The unit menu changes the labels."}}]}]}
+</script>
+</head>
+<body>
+<main>
+  <nav><a class="home" href="../"><img src="../icon.png" alt="" width="24" height="24">Headwind</a><a href="../tools/crosswind-calculator.html">Crosswind</a><a href="../tools/density-altitude-calculator.html">Density altitude</a><a href="../tools/wind-triangle-calculator.html">Wind triangle</a><a href="../#guides">Guides</a><a href="../#support">Support</a></nav>
+  <h1>Crosswind calculator</h1>
+  <p class="lead">Enter the runway and the wind. You get the crosswind and headwind components right away, with a check against your limit if you set one.</p>
+
+  <form class="tool" onsubmit="return false" aria-label="Crosswind calculator">
+    <div class="fields">
+      <label class="field">Runway<input id="rwy" value="27L" autocomplete="off" autocapitalize="characters" spellcheck="false"></label>
+      <label class="field">Wind from (degrees)<input id="wdir" value="300" inputmode="decimal" autocomplete="off"></label>
+      <label class="field">Wind speed<div class="row"><input id="wspd" value="18" inputmode="decimal" autocomplete="off"><select id="unit" aria-label="Speed unit"><option>kt</option><option>mph</option><option value="km/h">km/h</option></select></div></label>
+      <label class="field">Gusts (optional)<input id="gust" value="26" inputmode="decimal" autocomplete="off"></label>
+      <label class="field">Your crosswind limit (optional)<input id="limit" value="15" inputmode="decimal" autocomplete="off"></label>
+    </div>
+    <p class="msg" id="msg" role="alert" hidden></p>
+    <div class="results" id="result" aria-live="polite"></div>
+    <svg class="diagram" id="diagram" viewBox="0 0 300 250" role="img"></svg>
+    <p class="legend"><i style="color:var(--wind)">Wind</i> · <i style="color:var(--accent)">Headwind or tailwind</i> · <i style="color:var(--track)">Crosswind</i></p>
+    <noscript><p class="msg">This calculator needs JavaScript. The formula below works on any calculator.</p></noscript>
+  </form>
+  <p class="note">Everything is worked out in your browser. Nothing you type leaves this page.</p>
+  <p class="applink">Headwind has this same runway wind calculator free on your phone, and it works with no signal. <a href="https://play.google.com/store/apps/details?id=com.eastframe.headwind">Headwind on Google Play</a>.</p>
+  <p class="safety"><strong>For planning and training only, not for navigation.</strong> Check every result against your aircraft's flight manual and official sources before you rely on it.</p>
+
+  <h2>How it is calculated</h2>
+  <p>Take the angle between the wind direction and the runway heading. Then split the wind into two parts with basic trigonometry:</p>
+  <pre class="formula">crosswind = wind speed × sin(angle)
+headwind  = wind speed × cos(angle)</pre>
+  <p>A runway number is its heading in tens of degrees, so runway 27 means about 270°. L, R and C only say which parallel runway it is. If the angle is more than 90°, the cosine goes negative and the headwind becomes a tailwind.</p>
+
+  <h2>Worked example</h2>
+  <p>Runway 27L, wind 300° at 18 knots, gusting 26.</p>
+  <ol>
+    <li>The angle is 300 − 270 = 30°. The wind is to the right of the runway.</li>
+    <li>Crosswind = 18 × sin 30° = 18 × 0.5 = <strong>9 knots from the right</strong>.</li>
+    <li>Headwind = 18 × cos 30° = 18 × 0.866 = <strong>about 16 knots</strong>.</li>
+    <li>In the gusts, crosswind = 26 × 0.5 = <strong>13 knots</strong>. Against a 15 knot limit, that is within it.</li>
+  </ol>
+
+  <h2>The clock rule, for when you have no calculator</h2>
+  <div class="tablewrap"><table>
+    <tr><th>Angle off the runway</th><th>Rule of thumb</th><th>Exact sine</th></tr>
+    <tr><td>15°</td><td>a quarter</td><td>0.26</td></tr>
+    <tr><td>30°</td><td>half</td><td>0.50</td></tr>
+    <tr><td>45°</td><td>three quarters</td><td>0.71</td></tr>
+    <tr><td>60° or more</td><td>all of it</td><td>0.87 to 1.00</td></tr>
+  </table></div>
+  <p>From 30° on, the rule errs high, which is the safe side. The guide on <a href="../guides/crosswind-check-before-flight.html">doing a crosswind check before a flight</a> walks through it step by step.</p>
+
+  <h2>Limits</h2>
+  <ul>
+    <li>It uses the wind you enter. Surface wind can change quickly, so use the latest report and listen for updates.</li>
+    <li>It uses the rounded runway heading unless you enter the exact one (for example 275). The difference is rarely more than a knot or two.</li>
+    <li>It does not know your aircraft, your experience or the surface. A wet or narrow runway may need a lower limit.</li>
+    <li>Use magnetic wind with a magnetic runway heading. The calculator does not apply variation for you.</li>
+  </ul>
+
+  <h2>Frequently asked</h2>
+  <div class="card faq">
+    <p><strong>Is the runway number magnetic or true?</strong> Magnetic. Winds from a tower or ATIS are magnetic too, so you can use them directly. Winds in a METAR or TAF are true, so correct them for magnetic variation first. Where variation is large, it changes the answer.</p>
+    <p><strong>How do I do this without a calculator?</strong> Use the clock rule. An angle of 15° gives about a quarter of the wind speed as crosswind, 30° about half, 45° about three quarters, and 60° or more nearly all of it.</p>
+    <p><strong>Should I use the steady wind or the gust?</strong> Check both. The gust crosswind is the higher figure and is the one to compare with your limit. This calculator does that when you fill in the gust and limit fields.</p>
+    <p><strong>What limit should I enter?</strong> Your own. That may be a limit from your instructor, your personal minimums, or the figure in your aircraft's flight manual. In many light aircraft the published crosswind figure is a demonstrated value, so read how your manual words it.</p>
+    <p><strong>Does it work in mph or km/h?</strong> Yes. The components come out in the same unit as the wind you enter. The unit menu changes the labels.</p>
+  </div>
+  <footer>© 2026 Eastframe Technology LLC · <a href="../privacy.html">Privacy policy</a> · <a href="../#support">Support</a></footer>
+</main>
+<script src="flight.js"></script>
+<script src="crosswind-page.js"></script>
+</body>
+</html>

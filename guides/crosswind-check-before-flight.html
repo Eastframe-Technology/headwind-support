@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How to do a crosswind check before a flight, step by step</title>
+<meta name="description" content="A short routine for working out crosswind before you fly: get the wind, watch true versus magnetic, find the angle, do the math, check the gusts and compare with your limit.">
+<link rel="canonical" href="https://eastframe-technology.github.io/headwind-support/guides/crosswind-check-before-flight.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="How to do a crosswind check before a flight">
+<meta property="og:description" content="A short routine for working out crosswind before you fly: get the wind, watch true versus magnetic, find the angle, do the math, check the gusts and compare with your limit.">
+<meta property="og:image" content="https://eastframe-technology.github.io/headwind-support/img/og.jpg">
+<meta property="og:url" content="https://eastframe-technology.github.io/headwind-support/guides/crosswind-check-before-flight.html">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="../icon.png">
+<link rel="stylesheet" href="../style.css">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Article","headline":"How to do a crosswind check before a flight","description":"A short routine for working out crosswind before you fly: get the wind, watch true versus magnetic, find the angle, do the math, check the gusts and compare with your limit.","datePublished":"2026-11-06","author":{"@type":"Organization","name":"Eastframe Technology LLC"},"publisher":{"@type":"Organization","name":"Eastframe Technology LLC"},"image":"https://eastframe-technology.github.io/headwind-support/img/og.jpg","mainEntityOfPage":"https://eastframe-technology.github.io/headwind-support/guides/crosswind-check-before-flight.html"}
+</script>
+</head>
+<body>
+<main>
+  <nav><a class="home" href="../"><img src="../icon.png" alt="" width="24" height="24">Headwind</a><a href="../tools/crosswind-calculator.html">Crosswind</a><a href="../tools/density-altitude-calculator.html">Density altitude</a><a href="../tools/wind-triangle-calculator.html">Wind triangle</a><a href="../#guides">Guides</a><a href="../#support">Support</a></nav>
+  <h1>How to do a crosswind check before a flight</h1>
+  <p class="lead">A crosswind check takes less than a minute: get the wind, find the angle to the runway, work out the crosswind in the steady wind and the gusts, and compare it with your limit. The step people miss is making sure the wind and the runway use the same north.</p>
+
+  <h2>1. Get the current wind</h2>
+  <p>On the ground, use ATIS or AWOS at your field, or ask the tower. For planning, use the METAR and the TAF. Note the direction, the speed and any gust. A report reading 30018G26KT means 300° at 18 knots, gusting 26.</p>
+
+  <h2>2. Check true versus magnetic</h2>
+  <p>Runway numbers are magnetic. So are winds you hear from a tower or ATIS. But winds in a printed METAR or TAF are true. In the US and many other places, you need to convert a printed wind before comparing it with the runway.</p>
+  <p>This can matter. Say the METAR gives 300° true at 18 knots, on runway 27, where variation is 13° east. East variation is subtracted ("east is least"), so the magnetic wind is 287°. That is 17° off the runway, not 30°, and the crosswind is about 5 knots rather than 9. With west variation, or the wind on the other side of the runway, the same mistake can make things look better than they are.</p>
+
+  <h2>3. Find the angle</h2>
+  <p>Subtract the runway heading from the wind direction. Runway 27 is about 270°, so a magnetic wind of 300° is 30° off, from the right. If the angle is more than 90°, that runway has a tailwind, and you should look at the other end.</p>
+
+  <h2>4. Work out the crosswind</h2>
+  <p>For a quick answer, use the clock rule. For an exact one, multiply by the sine of the angle.</p>
+  <div class="tablewrap"><table>
+    <tr><th>Angle</th><th>Rule of thumb</th><th>Crosswind at 18 kt, exact</th></tr>
+    <tr><td>15°</td><td>a quarter</td><td>4.7 kt</td></tr>
+    <tr><td>30°</td><td>half</td><td>9.0 kt</td></tr>
+    <tr><td>45°</td><td>three quarters</td><td>12.7 kt</td></tr>
+    <tr><td>60°</td><td>all of it</td><td>15.6 kt</td></tr>
+    <tr><td>90°</td><td>all of it</td><td>18.0 kt</td></tr>
+  </table></div>
+  <p>The name comes from a clock face: read 15° as 15 minutes, a quarter of an hour, and 30° as half. From 30° on it errs high, which is the safe side. Our <a href="../tools/crosswind-calculator.html">crosswind calculator</a> gives you the exact figure, with the headwind as well.</p>
+
+  <h2>5. Redo it for the gust</h2>
+  <p>Use the gust speed at the same angle. With 300° at 18 gusting 26 on runway 27:</p>
+  <ul>
+    <li>Steady: 18 × 0.5 = 9 knots of crosswind, and about 16 knots of headwind.</li>
+    <li>Gust: 26 × 0.5 = 13 knots of crosswind.</li>
+  </ul>
+  <p>It is the 13 you compare with your limit. Wind direction also moves around, so a report of variable wind means checking the worst direction, not just the middle one.</p>
+
+  <h2>6. Compare it with your limit</h2>
+  <p>Your limit is the lowest of the numbers that apply to you:</p>
+  <ul>
+    <li><strong>A limit from your instructor.</strong> A student's solo endorsement often includes one. It applies as written.</li>
+    <li><strong>Your personal minimums.</strong> Write these down on a calm day, not at the airport with a full tank and a plan.</li>
+    <li><strong>Your flight manual.</strong> Many light aircraft publish a "maximum demonstrated crosswind". Read the wording: it records what was shown during certification and may not be an operating limit, but it is still useful information about the aircraft.</li>
+  </ul>
+  <p>Conditions lower the number too. A wet or narrow runway, an unfamiliar aircraft or a long gap since your last flight are all good reasons for a margin.</p>
+
+  <h2>7. Decide before you are committed</h2>
+  <p>Do the same sums for the other runways available, including at your destination and your alternate. A forecast crosswind at arrival time is worth more attention than the one on departure, because you will have less choice by then. If the numbers are close to your limit, the useful options are another runway, another time or another day.</p>
+
+  <h2>Doing this on a phone</h2>
+  <p>The runway wind calculator in Headwind is free and works offline. Enter the runway, wind, gust and limit, and it shows the components, a diagram and whether you are within your limit. It uses the numbers you give it, so step 2 is still yours to do.</p>
+  <p class="safety"><strong>For planning and training only, not for navigation.</strong> Check every result against your aircraft's flight manual and official sources before you rely on it.</p>
+  <div class="card"><strong>Headwind</strong> is an E6B flight computer for Android with no ads and no subscription. <a href="https://play.google.com/store/apps/details?id=com.eastframe.headwind">Get it on Google Play</a>.</div>
+  <footer>© 2026 Eastframe Technology LLC · <a href="../privacy.html">Privacy policy</a> · <a href="../#support">Support</a></footer>
+</main>
+</body>
+</html>

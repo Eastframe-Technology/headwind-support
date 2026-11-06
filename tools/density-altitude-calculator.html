@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Density altitude calculator: from elevation, altimeter and temperature</title>
+<meta name="description" content="Free density altitude calculator. Enter field elevation, altimeter setting and temperature to get pressure altitude and density altitude, with the rule of thumb beside the exact answer.">
+<link rel="canonical" href="https://eastframe-technology.github.io/headwind-support/tools/density-altitude-calculator.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Density altitude calculator">
+<meta property="og:description" content="Free density altitude calculator. Enter field elevation, altimeter setting and temperature to get pressure altitude and density altitude, with the rule of thumb beside the exact answer.">
+<meta property="og:image" content="https://eastframe-technology.github.io/headwind-support/img/og.jpg">
+<meta property="og:url" content="https://eastframe-technology.github.io/headwind-support/tools/density-altitude-calculator.html">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="../icon.png">
+<link rel="stylesheet" href="../style.css">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@graph":[{"@type":"SoftwareApplication","name":"Density altitude calculator","description":"Pressure altitude and density altitude from field elevation, altimeter setting and outside air temperature.","url":"https://eastframe-technology.github.io/headwind-support/tools/density-altitude-calculator.html","applicationCategory":"UtilitiesApplication","operatingSystem":"Any, runs in a web browser","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"publisher":{"@type":"Organization","name":"Eastframe Technology LLC"}},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is density altitude, in one line?","acceptedAnswer":{"@type":"Answer","text":"It is the altitude in the standard atmosphere at which the air would be as thin as the air around you now. It is what the wing, propeller and engine actually feel."}},{"@type":"Question","name":"Why does this differ from the rule of thumb?","acceptedAnswer":{"@type":"Answer","text":"The rule of thumb (120 ft per °C above standard) is a straight-line shortcut. The exact formula is not a straight line, so the two drift apart on hot days. In the example above they are about 190 ft apart. Both are shown so you can compare."}},{"@type":"Question","name":"Does humidity count?","acceptedAnswer":{"@type":"Answer","text":"Not here. This is the dry-air figure, the same one the rule of thumb gives. Humid air is a little thinner still, so on a muggy day the true figure is somewhat higher."}},{"@type":"Question","name":"What altimeter setting do I enter?","acceptedAnswer":{"@type":"Answer","text":"The current local setting from the METAR, ATIS or AWOS. If you have the altimeter in the aircraft set to 29.92 inHg (1013 hPa), the altitude it reads is the pressure altitude already."}},{"@type":"Question","name":"Can I use density altitude to read my takeoff chart?","acceptedAnswer":{"@type":"Answer","text":"Read how your chart is set up. Many light-aircraft performance tables are entered with pressure altitude and temperature, not density altitude. Use the flight manual's own method."}}]}]}
+</script>
+</head>
+<body>
+<main>
+  <nav><a class="home" href="../"><img src="../icon.png" alt="" width="24" height="24">Headwind</a><a href="../tools/crosswind-calculator.html">Crosswind</a><a href="../tools/density-altitude-calculator.html">Density altitude</a><a href="../tools/wind-triangle-calculator.html">Wind triangle</a><a href="../#guides">Guides</a><a href="../#support">Support</a></nav>
+  <h1>Density altitude calculator</h1>
+  <p class="lead">Enter the field elevation, the altimeter setting and the outside air temperature. You get pressure altitude and density altitude, with the rule of thumb beside the exact answer.</p>
+
+  <form class="tool" onsubmit="return false" aria-label="Density altitude calculator">
+    <div class="fields">
+      <label class="field">Field elevation<div class="row"><input id="elev" value="5355" inputmode="decimal" autocomplete="off"><select id="altUnit" aria-label="Altitude unit"><option>ft</option><option>m</option></select></div></label>
+      <label class="field">Altimeter setting<div class="row"><input id="qnh" value="30.12" inputmode="decimal" autocomplete="off"><select id="pressUnit" aria-label="Pressure unit"><option>inHg</option><option>hPa</option></select></div></label>
+      <label class="field wide">Outside air temperature<div class="row"><input id="oat" value="31" inputmode="decimal" autocomplete="off"><button type="button" class="sign" data-for="oat" aria-label="Change the sign of the temperature">±</button><select id="tempUnit" aria-label="Temperature unit"><option value="c">°C</option><option value="f">°F</option></select></div></label>
+    </div>
+    <p class="msg" id="msg" role="alert" hidden></p>
+    <div class="results" id="result" aria-live="polite"></div>
+    <noscript><p class="msg">This calculator needs JavaScript. The rule of thumb below works on any calculator.</p></noscript>
+  </form>
+  <p class="note">Everything is worked out in your browser. Nothing you type leaves this page.</p>
+  <p class="applink">In the app, pressure and density altitude are part of Headwind Pro, with true airspeed and Mach next to them. <a href="https://play.google.com/store/apps/details?id=com.eastframe.headwind">Headwind on Google Play</a>.</p>
+  <p class="safety"><strong>For planning and training only, not for navigation.</strong> Check every result against your aircraft's flight manual and official sources before you rely on it.</p>
+
+  <h2>How it is calculated</h2>
+  <p>Pressure altitude comes first. It corrects the field elevation for today's pressure. Density altitude then corrects pressure altitude for temperature. This calculator uses the standard-atmosphere formulas:</p>
+  <pre class="formula">station pressure = altimeter × (1 − 0.0000068756 × elevation)^5.2559
+pressure altitude = 145442 × (1 − (station pressure ÷ 29.921)^0.19026)
+density altitude  = 145442 × (1 − (17.326 × P ÷ (459.67 + T))^0.235)</pre>
+  <p class="note">P is the pressure in inHg at the pressure altitude. T is the temperature in °F. Results are in feet.</p>
+  <p>The rule of thumb you meet in training is shorter, and close enough to catch a problem:</p>
+  <pre class="formula">pressure altitude ≈ elevation + (29.92 − altimeter) × 1000
+standard temp (°C) ≈ 15 − 2 × (pressure altitude ÷ 1000)
+density altitude  ≈ pressure altitude + 120 × (OAT − standard temp)</pre>
+
+  <h2>Worked example</h2>
+  <p>A field at 5,355 ft, altimeter 30.12 inHg, 31 °C.</p>
+  <ol>
+    <li>Pressure altitude: the exact formula gives <strong>5,178 ft</strong>. The rule of thumb gives 5,355 + (29.92 − 30.12) × 1000 = 5,155 ft.</li>
+    <li>Standard temperature at that altitude is about 4.7 °C, so the air is 26.3 °C warmer than standard.</li>
+    <li>Density altitude: the exact formula gives <strong>8,140 ft</strong>. The rule of thumb gives 5,178 + 120 × 26.3, about 8,330 ft.</li>
+  </ol>
+  <p>The aircraft is sitting at 5,355 ft but performs as if it were near 8,100 ft. The guide on <a href="../guides/density-altitude-explained.html">what density altitude means for your takeoff</a> explains why that matters.</p>
+
+  <h2>Limits</h2>
+  <ul>
+    <li>Dry air. Humidity is not included, so on a humid day the real figure is a little higher.</li>
+    <li>It gives an altitude, not a takeoff distance. Takeoff and climb numbers come from your flight manual.</li>
+    <li>Temperature near the runway surface can run warmer than the reported figure. Add a margin.</li>
+    <li>At exactly standard conditions the formula lands within a few dozen feet of the pressure altitude rather than on it, because of rounding in the published constants. The same small difference shows in the app.</li>
+  </ul>
+
+  <h2>Frequently asked</h2>
+  <div class="card faq">
+    <p><strong>What is density altitude, in one line?</strong> It is the altitude in the standard atmosphere at which the air would be as thin as the air around you now. It is what the wing, propeller and engine actually feel.</p>
+    <p><strong>Why does this differ from the rule of thumb?</strong> The rule of thumb (120 ft per °C above standard) is a straight-line shortcut. The exact formula is not a straight line, so the two drift apart on hot days. In the example above they are about 190 ft apart. Both are shown so you can compare.</p>
+    <p><strong>Does humidity count?</strong> Not here. This is the dry-air figure, the same one the rule of thumb gives. Humid air is a little thinner still, so on a muggy day the true figure is somewhat higher.</p>
+    <p><strong>What altimeter setting do I enter?</strong> The current local setting from the METAR, ATIS or AWOS. If you have the altimeter in the aircraft set to 29.92 inHg (1013 hPa), the altitude it reads is the pressure altitude already.</p>
+    <p><strong>Can I use density altitude to read my takeoff chart?</strong> Read how your chart is set up. Many light-aircraft performance tables are entered with pressure altitude and temperature, not density altitude. Use the flight manual's own method.</p>
+  </div>
+  <footer>© 2026 Eastframe Technology LLC · <a href="../privacy.html">Privacy policy</a> · <a href="../#support">Support</a></footer>
+</main>
+<script src="flight.js"></script>
+<script src="density-altitude-page.js"></script>
+</body>
+</html>

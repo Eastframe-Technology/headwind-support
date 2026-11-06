@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Wind triangle calculator: heading, wind correction and ground speed</title>
+<meta name="description" content="Free wind triangle calculator, the wind side of an E6B. Enter true course, true airspeed and wind to get heading, wind correction angle and ground speed, or find the wind from what you flew.">
+<link rel="canonical" href="https://eastframe-technology.github.io/headwind-support/tools/wind-triangle-calculator.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Wind triangle calculator">
+<meta property="og:description" content="Free wind triangle calculator, the wind side of an E6B. Enter true course, true airspeed and wind to get heading, wind correction angle and ground speed, or find the wind from what you flew.">
+<meta property="og:image" content="https://eastframe-technology.github.io/headwind-support/img/og.jpg">
+<meta property="og:url" content="https://eastframe-technology.github.io/headwind-support/tools/wind-triangle-calculator.html">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="../icon.png">
+<link rel="stylesheet" href="../style.css">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@graph":[{"@type":"SoftwareApplication","name":"Wind triangle calculator","description":"Heading, wind correction angle and ground speed from true course, true airspeed and wind. Also finds the wind.","url":"https://eastframe-technology.github.io/headwind-support/tools/wind-triangle-calculator.html","applicationCategory":"UtilitiesApplication","operatingSystem":"Any, runs in a web browser","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"publisher":{"@type":"Organization","name":"Eastframe Technology LLC"}},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"True or magnetic?","acceptedAnswer":{"@type":"Answer","text":"Keep everything in one reference. Winds-aloft forecasts and a course measured from a chart are normally true, so the result is a true heading. Apply magnetic variation afterwards to get the magnetic heading."}},{"@type":"Question","name":"Which airspeed do I enter?","acceptedAnswer":{"@type":"Answer","text":"True airspeed, not the number on the airspeed indicator. The two grow apart as you climb, by about 2% per 1,000 ft as a rule of thumb."}},{"@type":"Question","name":"Why does a pure crosswind slow me down?","acceptedAnswer":{"@type":"Answer","text":"Because the aircraft points partly into the wind to hold the course, only part of its airspeed goes along the track. With a 20 knot crosswind at 120 knots true, ground speed is about 118 knots, not 120."}},{"@type":"Question","name":"What does \"No solution\" mean?","acceptedAnswer":{"@type":"Answer","text":"The crosswind part of the wind is stronger than the true airspeed, or the headwind is so strong that the aircraft makes no progress. No heading can hold that course."}}]}]}
+</script>
+</head>
+<body>
+<main>
+  <nav><a class="home" href="../"><img src="../icon.png" alt="" width="24" height="24">Headwind</a><a href="../tools/crosswind-calculator.html">Crosswind</a><a href="../tools/density-altitude-calculator.html">Density altitude</a><a href="../tools/wind-triangle-calculator.html">Wind triangle</a><a href="../#guides">Guides</a><a href="../#support">Support</a></nav>
+  <h1>Wind triangle calculator</h1>
+  <p class="lead">The wind side of an E6B. Enter your true course, true airspeed and the wind to get the heading to fly and your ground speed.</p>
+
+  <form class="tool" onsubmit="return false" aria-label="Wind triangle calculator">
+    <div class="fields">
+      <label class="field">True course (degrees)<input id="course" value="345" inputmode="decimal" autocomplete="off"></label>
+      <label class="field">True airspeed<div class="row"><input id="tas" value="120" inputmode="decimal" autocomplete="off"><select id="unit" aria-label="Speed unit"><option>kt</option><option>mph</option><option value="km/h">km/h</option></select></div></label>
+      <label class="field">Wind from (degrees)<input id="wdir" value="30" inputmode="decimal" autocomplete="off"></label>
+      <label class="field">Wind speed<input id="wspd" value="15" inputmode="decimal" autocomplete="off"></label>
+    </div>
+    <p class="msg" id="msg" role="alert" hidden></p>
+    <div class="results" id="result" aria-live="polite"></div>
+    <svg class="diagram" id="diagram" viewBox="0 0 300 210" role="img"></svg>
+    <p class="legend" id="legend"><i style="color:var(--accent)">Heading and TAS</i> · <i style="color:var(--wind)">Wind</i> · <i style="color:var(--track)">Track and ground speed</i></p>
+    <noscript><p class="msg">This calculator needs JavaScript. The formulas below work on any calculator.</p></noscript>
+  </form>
+  <p class="note">Everything is worked out in your browser. Nothing you type leaves this page.</p>
+  <p class="applink">Headwind has the wind triangle free on your phone, with a vector diagram. Its nav log, in Pro, runs the triangle for each leg. <a href="https://play.google.com/store/apps/details?id=com.eastframe.headwind">Headwind on Google Play</a>.</p>
+  <p class="safety"><strong>For planning and training only, not for navigation.</strong> Check every result against your aircraft's flight manual and official sources before you rely on it.</p>
+
+  <h2>How it is calculated</h2>
+  <p>Take the angle between the wind direction and your course. The crosswind part of the wind decides how far you must turn. The headwind part, with the turn, decides how fast you cover the ground.</p>
+  <pre class="formula">crosswind = wind speed × sin(wind direction − course)
+headwind  = wind speed × cos(wind direction − course)
+correction angle = asin(crosswind ÷ TAS)
+heading = course + correction angle
+ground speed = TAS × cos(correction angle) − headwind</pre>
+  <p>It is the same triangle you draw on a manual E6B: your heading at true airspeed, plus the wind, gives your track at ground speed.</p>
+
+  <h2>Worked example</h2>
+  <p>True course 345°, true airspeed 120 knots, wind from 030° at 15 knots.</p>
+  <ol>
+    <li>The wind is 45° to the right of the course. Both parts are 15 × 0.707 = 10.6 knots.</li>
+    <li>Correction angle = asin(10.6 ÷ 120) = about 5° to the right.</li>
+    <li>Heading = 345 + 5 = <strong>350°</strong>.</li>
+    <li>Ground speed = 120 × cos 5° − 10.6 = 119.5 − 10.6 = <strong>about 109 knots</strong>.</li>
+  </ol>
+
+  <h2>Find the wind</h2>
+  <p>This works backwards. Give it what you flew (heading and true airspeed) and what happened over the ground (track and ground speed), and it gives the wind you actually met.</p>
+  <form class="tool" onsubmit="return false" aria-label="Find the wind">
+    <div class="fields">
+      <label class="field">True heading (degrees)<input id="fhdg" value="80" inputmode="decimal" autocomplete="off"></label>
+      <label class="field">True airspeed<div class="row"><input id="ftas" value="120" inputmode="decimal" autocomplete="off"><select id="funit" aria-label="Speed unit"><option>kt</option><option>mph</option><option value="km/h">km/h</option></select></div></label>
+      <label class="field">Track (degrees)<input id="ftrk" value="90" inputmode="decimal" autocomplete="off"></label>
+      <label class="field">Ground speed<input id="fgs" value="118" inputmode="decimal" autocomplete="off"></label>
+    </div>
+    <p class="msg" id="fmsg" role="alert" hidden></p>
+    <div class="results" id="fresult" aria-live="polite"></div>
+  </form>
+
+  <h2>Limits</h2>
+  <ul>
+    <li>A forecast wind is an estimate. Use the result to plan, then check your actual track and ground speed in flight.</li>
+    <li>It works one leg and one wind at a time. It assumes steady wind and airspeed.</li>
+    <li>Use the same speed unit for true airspeed and wind.</li>
+    <li>For a landing crosswind, use the <a href="crosswind-calculator.html">crosswind calculator</a>, which takes a runway number.</li>
+  </ul>
+
+  <h2>Frequently asked</h2>
+  <div class="card faq">
+    <p><strong>True or magnetic?</strong> Keep everything in one reference. Winds-aloft forecasts and a course measured from a chart are normally true, so the result is a true heading. Apply magnetic variation afterwards to get the magnetic heading.</p>
+    <p><strong>Which airspeed do I enter?</strong> True airspeed, not the number on the airspeed indicator. The two grow apart as you climb, by about 2% per 1,000 ft as a rule of thumb.</p>
+    <p><strong>Why does a pure crosswind slow me down?</strong> Because the aircraft points partly into the wind to hold the course, only part of its airspeed goes along the track. With a 20 knot crosswind at 120 knots true, ground speed is about 118 knots, not 120.</p>
+    <p><strong>What does "No solution" mean?</strong> The crosswind part of the wind is stronger than the true airspeed, or the headwind is so strong that the aircraft makes no progress. No heading can hold that course.</p>
+  </div>
+  <footer>© 2026 Eastframe Technology LLC · <a href="../privacy.html">Privacy policy</a> · <a href="../#support">Support</a></footer>
+</main>
+<script src="flight.js"></script>
+<script src="wind-triangle-page.js"></script>
+</body>
+</html>

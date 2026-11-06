@@ -1,0 +1,64 @@
+/* Headwind: navy from the icon, with its three wind-triangle colours. */
+:root { color-scheme: light dark; --bg:#f2f6fa; --fg:#0d1b2a; --muted:#4f6072; --accent:#0277bd; --on-accent:#ffffff; --wind:#b85c00; --track:#2e7d32; --card:#ffffff; --line:#d8e2eb; --field:#f7fafc; --warn:#b3261e; --ok:#1b7a33; --band:#0a1628; --band-fg:#e8f1f8; --band-muted:#a8bccd; }
+@media (prefers-color-scheme: dark) { :root { --bg:#0a1628; --fg:#e8eef4; --muted:#a0b3c4; --accent:#4fc3f7; --on-accent:#06202f; --wind:#ffb74d; --track:#81c784; --card:#11233a; --line:#25405c; --field:#0c1b2f; --warn:#ff8a80; --ok:#81c784; --band:#0f253e; } }
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body { margin:0; background:var(--bg); color:var(--fg); font:17px/1.6 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+main { max-width:780px; margin:0 auto; padding:24px 16px 64px; }
+nav { display:flex; gap:16px; flex-wrap:wrap; font-size:15px; margin-bottom:28px; align-items:center; }
+nav a { color:var(--muted); text-decoration:none; } nav a:hover { color:var(--fg); }
+nav a.home { color:var(--fg); font-weight:650; margin-right:auto; display:flex; align-items:center; gap:8px; }
+nav img { width:24px; height:24px; border-radius:6px; }
+h1 { font-size:clamp(29px, 6vw, 40px); line-height:1.15; margin:0 0 12px; letter-spacing:-0.02em; }
+h2 { margin-top:44px; font-size:23px; line-height:1.3; } h3 { font-size:18px; margin:24px 0 6px; }
+p.lead { color:var(--muted); font-size:19px; margin-top:0; }
+a { color:var(--accent); }
+.hero { background:var(--band); color:var(--band-fg); border-radius:20px; padding:28px 22px; margin-bottom:8px; position:relative; overflow:hidden; }
+.hero svg.ring { position:absolute; right:-70px; top:-70px; width:280px; height:280px; color:#4fc3f7; opacity:.22; pointer-events:none; }
+.hero h1 { position:relative; max-width:560px; } .hero p.lead { color:var(--band-muted); position:relative; max-width:560px; }
+.hero .note { color:var(--band-muted); position:relative; margin-bottom:0; } .hero .cta { position:relative; background:#4fc3f7; color:#06202f; }
+.card { background:var(--card); border:1px solid var(--line); border-radius:14px; padding:16px 20px; margin:16px 0; overflow-wrap:anywhere; }
+.cta { display:inline-flex; align-items:center; gap:10px; background:var(--accent); color:var(--on-accent); text-decoration:none; font-weight:650; padding:13px 22px; border-radius:12px; margin:8px 0 4px; }
+.cta svg { width:20px; height:20px; }
+.note { color:var(--muted); font-size:14px; }
+.shots { display:flex; gap:12px; overflow-x:auto; padding:8px 16px 12px; margin:24px -16px 0; scroll-snap-type:x mandatory; }
+.shots img { width:200px; height:auto; aspect-ratio:1/2; border-radius:14px; flex:none; scroll-snap-align:start; background:#0a1628; }
+.grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(210px, 1fr)); gap:12px; }
+.grid .card { margin:0; } .grid h3 { margin-top:0; }
+.toolcards { display:grid; grid-template-columns:repeat(auto-fit, minmax(210px, 1fr)); gap:12px; margin:16px 0; }
+.toolcards a { display:block; background:var(--card); border:1px solid var(--line); border-top:3px solid var(--c, var(--accent)); border-radius:14px; padding:14px 16px; text-decoration:none; color:var(--fg); }
+.toolcards a:hover { border-color:var(--c, var(--accent)); }
+.toolcards strong { display:block; color:var(--c, var(--accent)); font-size:18px; margin-bottom:2px; }
+.toolcards span { font-size:15px; color:var(--muted); }
+ul, ol { padding-left:22px; } li { margin:4px 0; }
+.tablewrap { overflow-x:auto; }
+table { border-collapse:collapse; width:100%; font-size:15px; } td, th { border-bottom:1px solid var(--line); padding:8px 6px; text-align:left; vertical-align:top; }
+code { font-size:14px; background:var(--card); border:1px solid var(--line); padding:1px 5px; border-radius:5px; overflow-wrap:anywhere; }
+pre.formula { background:var(--card); border:1px solid var(--line); border-radius:10px; padding:10px 14px; font:14px/1.6 ui-monospace, Menlo, Consolas, monospace; white-space:pre-wrap; overflow-wrap:anywhere; }
+footer { color:var(--muted); font-size:14px; margin-top:56px; border-top:1px solid var(--line); padding-top:16px; }
+/* Calculators */
+.tool { background:var(--card); border:1px solid var(--line); border-radius:16px; padding:16px; margin:20px 0; }
+.fields { display:grid; grid-template-columns:repeat(2, minmax(0, 1fr)); gap:12px; }
+.field { display:flex; flex-direction:column; gap:4px; font-size:14px; color:var(--muted); min-width:0; }
+.field .row { display:flex; gap:6px; min-width:0; }
+input, select { font:inherit; font-size:18px; color:var(--fg); background:var(--field); border:1px solid var(--line); border-radius:10px; padding:9px 10px; min-width:0; width:100%; }
+select { font-size:16px; width:auto; flex:none; padding:9px 4px 9px 6px; }
+input:focus, select:focus, button:focus-visible { outline:2px solid var(--accent); outline-offset:1px; }
+button.sign { font:inherit; font-size:17px; flex:none; width:40px; background:var(--field); color:var(--fg); border:1px solid var(--line); border-radius:10px; cursor:pointer; }
+.results { display:grid; grid-template-columns:repeat(2, minmax(0, 1fr)); gap:8px 16px; margin-top:16px; border-top:1px solid var(--line); padding-top:14px; }
+.results div.big b { font-size:30px; line-height:1.15; color:var(--accent); display:block; font-variant-numeric:tabular-nums; }
+.results div.small b { font-size:18px; display:block; font-variant-numeric:tabular-nums; }
+.results span { font-size:14px; color:var(--muted); }
+.results .wide { grid-column:1 / -1; }
+.msg { color:var(--warn); margin:14px 0 0; font-size:15px; }
+.results span.verdict-ok { color:var(--ok); font-weight:650; font-size:15px; } .results span.verdict-over { color:var(--warn); font-weight:650; font-size:15px; }
+.how { font:14px/1.6 ui-monospace, Menlo, Consolas, monospace; color:var(--muted); margin:12px 0 0; overflow-wrap:anywhere; }
+.diagram { display:block; width:100%; max-width:360px; height:auto; margin:14px auto 0; }
+.diagram text { fill:var(--fg); font:12px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+.diagram .rw { fill:var(--muted); opacity:.35; } .diagram .cl { stroke:var(--bg); stroke-width:2; stroke-dasharray:10 8; }
+.applink { font-size:15px; color:var(--muted); border-left:3px solid var(--line); padding-left:12px; margin:16px 0; }
+.safety { font-size:15px; border-left:3px solid var(--wind); padding-left:12px; margin:20px 0; }
+.legend { font-size:14px; color:var(--muted); text-align:center; margin:4px 0 0; }
+.legend i { font-style:normal; font-weight:700; }
+@media (max-width: 480px) { nav { gap:12px; font-size:14px; } nav a.home { width:100%; margin-bottom:2px; } .hero { padding:22px 18px; } }
+.field.wide { grid-column:1 / -1; }

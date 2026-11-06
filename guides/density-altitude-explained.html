@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Density altitude explained: why a hot day changes your takeoff</title>
+<meta name="description" content="Density altitude is how high the aircraft feels it is. How to work it out, why heat and high fields lengthen the takeoff, and how to use it with your flight manual.">
+<link rel="canonical" href="https://eastframe-technology.github.io/headwind-support/guides/density-altitude-explained.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="What density altitude means for your takeoff">
+<meta property="og:description" content="Density altitude is how high the aircraft feels it is. How to work it out, why heat and high fields lengthen the takeoff, and how to use it with your flight manual.">
+<meta property="og:image" content="https://eastframe-technology.github.io/headwind-support/img/og.jpg">
+<meta property="og:url" content="https://eastframe-technology.github.io/headwind-support/guides/density-altitude-explained.html">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="../icon.png">
+<link rel="stylesheet" href="../style.css">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Article","headline":"What density altitude means for your takeoff","description":"Density altitude is how high the aircraft feels it is. How to work it out, why heat and high fields lengthen the takeoff, and how to use it with your flight manual.","datePublished":"2026-11-06","author":{"@type":"Organization","name":"Eastframe Technology LLC"},"publisher":{"@type":"Organization","name":"Eastframe Technology LLC"},"image":"https://eastframe-technology.github.io/headwind-support/img/og.jpg","mainEntityOfPage":"https://eastframe-technology.github.io/headwind-support/guides/density-altitude-explained.html"}
+</script>
+</head>
+<body>
+<main>
+  <nav><a class="home" href="../"><img src="../icon.png" alt="" width="24" height="24">Headwind</a><a href="../tools/crosswind-calculator.html">Crosswind</a><a href="../tools/density-altitude-calculator.html">Density altitude</a><a href="../tools/wind-triangle-calculator.html">Wind triangle</a><a href="../#guides">Guides</a><a href="../#support">Support</a></nav>
+  <h1>What density altitude means for your takeoff</h1>
+  <p class="lead">Density altitude is how high your aircraft feels it is. On a hot day at a high field it can be thousands of feet above the elevation on the chart, and the aircraft performs as if it were up there.</p>
+
+  <h2>Why thin air matters</h2>
+  <p>Warm air expands, and low pressure lets air spread out. Either way there is less air in the same space. That affects three things at once:</p>
+  <ul>
+    <li><strong>The wing</strong> needs a higher true airspeed to make the same lift, so you use more runway to reach it.</li>
+    <li><strong>The propeller</strong> has less air to push, so it produces less thrust.</li>
+    <li><strong>A normally aspirated engine</strong> takes in less air and makes less power.</li>
+  </ul>
+  <p>The result is a longer takeoff roll and a weaker climb, right when you need to clear whatever is past the end of the runway.</p>
+
+  <h2>How it is worked out</h2>
+  <p>There are two steps. Pressure altitude corrects the field elevation for today's pressure. Density altitude then corrects pressure altitude for temperature. The shortcut used in training looks like this:</p>
+  <pre class="formula">pressure altitude ≈ elevation + (29.92 − altimeter) × 1000
+standard temp (°C) ≈ 15 − 2 × (pressure altitude ÷ 1000)
+density altitude  ≈ pressure altitude + 120 × (OAT − standard temp)</pre>
+  <p>Take a field at 5,000 ft with the altimeter at 29.92 inHg and 25 °C. Standard temperature at 5,000 ft is 5 °C, so it is 20 °C above standard. 5,000 + 120 × 20 = 7,400 ft. The exact standard-atmosphere formula gives about 7,280 ft. Our <a href="../tools/density-altitude-calculator.html">density altitude calculator</a> shows both side by side.</p>
+
+  <h2>How much temperature does</h2>
+  <p>These come from the exact formula, with the altimeter at 29.92 inHg:</p>
+  <div class="tablewrap"><table>
+    <tr><th>Field elevation</th><th>Temperature</th><th>Density altitude</th></tr>
+    <tr><td>Sea level</td><td>35 °C</td><td>about 2,300 ft</td></tr>
+    <tr><td>2,000 ft</td><td>13 °C</td><td>about 2,250 ft</td></tr>
+    <tr><td>2,000 ft</td><td>33 °C</td><td>about 4,500 ft</td></tr>
+    <tr><td>5,000 ft</td><td>10 °C</td><td>about 5,600 ft</td></tr>
+    <tr><td>5,000 ft</td><td>35 °C</td><td>about 8,350 ft</td></tr>
+    <tr><td>7,000 ft</td><td>30 °C</td><td>about 10,200 ft</td></tr>
+  </table></div>
+  <p>So even a sea-level field can sit well above sea level in density altitude on a summer afternoon. A high field on the same afternoon is a different problem again.</p>
+
+  <h2>Why your answer may not match the book</h2>
+  <p>The rule of thumb and the exact formula drift apart as the day gets hotter. At 5,000 ft and 35 °C, the rule gives about 8,600 ft and the exact formula about 8,350 ft. Neither is wrong for its purpose. A manual E6B has its own reading limits as well, and a textbook answer is usually printed to the nearest hundred feet or so. If your figure is within a few hundred feet of the book's and you can explain why, you have understood it.</p>
+
+  <h2>What to do with the number</h2>
+  <ul>
+    <li><strong>Use your flight manual for performance.</strong> Density altitude tells you to pay attention. Takeoff distance and climb rate come from the manual's own tables. Many of those tables are entered with pressure altitude and temperature, so read how yours works.</li>
+    <li><strong>Compare with the runway you have.</strong> Add the margin your instructor teaches. Weight, a grass or soft surface, an upslope and a tailwind all lengthen the roll, and the manual usually says by how much.</li>
+    <li><strong>Lean as your manual says.</strong> At high density altitude, many piston engines need leaning for takeoff. Follow the procedure for your engine.</li>
+    <li><strong>Change what you can.</strong> Early morning is cooler than mid-afternoon. A lighter load shortens the roll. You can also wait.</li>
+  </ul>
+
+  <h2>A note on humidity</h2>
+  <p>These figures are for dry air, which is what the usual rule and formula assume. Water vapour is lighter than dry air, so humid air is a little thinner than the number suggests. The effect is smaller than temperature's, but on a hot, muggy day treat the figure as the low end.</p>
+
+  <h2>Doing this on a phone</h2>
+  <p>In Headwind, pressure and density altitude are part of Headwind Pro. The app shows the exact figures and the rule of thumb together, plus standard temperature and the difference from standard. The calculator on this site is free and uses the same formulas.</p>
+  <p class="safety"><strong>For planning and training only, not for navigation.</strong> Check every result against your aircraft's flight manual and official sources before you rely on it.</p>
+  <div class="card"><strong>Headwind</strong> is an E6B flight computer for Android with no ads and no subscription. <a href="https://play.google.com/store/apps/details?id=com.eastframe.headwind">Get it on Google Play</a>.</div>
+  <footer>© 2026 Eastframe Technology LLC · <a href="../privacy.html">Privacy policy</a> · <a href="../#support">Support</a></footer>
+</main>
+</body>
+</html>
